@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure for a node in the Splay Tree
+struct SplayNode {
+    int key;
+    struct SplayNode *left, *right;
+};
+
+// Right rotation in the Splay Tree
+struct SplayNode* rightRotate(struct SplayNode* x) {
+    struct SplayNode* y = x->left;
+    struct SplayNode* T2 = y->right;
+
+    // Perform rotation
+    y->right = x;
+    x->left = T2;
+
+    // Return the new root
+    return y;
+}
+
+// Left rotation in the Splay Tree
+struct SplayNode* leftRotate(struct SplayNode* x) {
+    struct SplayNode* y = x->right;
+    struct SplayNode* T2 = y->left;
+
+    // Perform rotation
+    y->left = x;
+    x->right = T2;
+
+    // Return the new root
+    return y;
+}
+
+// Splay function to move the node with the given key to the root
+struct SplayNode* splay(struct SplayNode* root, int key) {
+    if (root == NULL || root->key == key)
+        return root;
+
+    // Key is in left subtree
+    if (key < root->key) {
+        // Key is not present in the tree, no further processing required
+        if (root->left == NULL) return root;
+
+        // Zig-Zig (Left Left) case
+        if (key < root->left->key) {
+            root = rightRotate(root);
+            root = rightRotate(root);
+        }
+        // Zig-Zag (Left Right) case
+        else if (key > root->left->key) {
+            root->left = leftRotate(root->left);
+            root = rightRotate(root);
+        }
+    }
+    // Key is in right subtree
+    else {
+        // Key is not present in the tree, no further processing required
+        if (root->right == NULL) return root;
+
+        // Zag-Zig (Right Left) case
+        if (key < root->right->key) {
+            root->right = rightRotate(root->right);
+            root = leftRotate(root);
+        }
+        // Zag-Zag (Right Right) case
+        else if (key > root->right->key) {
+            root = leftRotate(root);
+            root = leftRotate(root);
+        }
+    }
+
+    return root;
+}
+
+// Function to insert a key into the Splay Tree
+struct SplayNode* insert(struct SplayNode* root, int key) {
+    // If tree is empty, create a new node
+    if (root == NULL) {
+        struct SplayNode* newNode = (struct SplayNode*)malloc(sizeof(struct SplayNode));
+        newNode->key = key;
+        newNode->left = newNode->right = NULL;
+        return newNode;
+    }
+
+    // Splay the tree to move the key to the root
+    root = splay(root, key);
+
+    // If the root's key is equal to the key, then it is already present in the tree
+    if (root->key == key) return root;
+
+    // Create a new node and insert it as the root
+    struct SplayNode* newNode = (struct SplayNode*)malloc(sizeof(struct SplayNode));
+    newNode->key = key;
+
+    // If key is smaller than the root's key, make the new node as the root
+    if (key < root->key) {
+        newNode->right = root;
+        newNode->left = root->left;
+        root->left = NULL;
+    }
+    else {
+        newNode->left = root;
+        newNode->right = root->right;
+        root->right = NULL;
+    }
+
+    return newNode;
+}
+
+// Function to perform inorder traversal of the tree
+void inorder(struct SplayNode* root) {
+    if (root == NULL) return;
+    inorder(root->left);
+    printf("%d ", root->key);
+    inorder(root->right);
+}
+
+int main() {
+    struct SplayNode* root = NULL;
+    int n, key;
+
+    printf("Enter the number of elements to insert into the Splay Tree: ");
+    scanf("%d", &n);
+
+    printf("Enter %d keys to insert into the Splay Tree:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("Enter key %d: ", i + 1);
+        scanf("%d", &key);
+        root = insert(root, key);
+    }
+
+    printf("Inorder traversal of the Splay Tree: ");
+    inorder(root);
+    printf("\n");
+
+    return 0;
+}

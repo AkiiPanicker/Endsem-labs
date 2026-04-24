@@ -1,0 +1,35 @@
+Hello We are about to start a coding journey in C language
+
+what you are going to see below are the basic concepts to get a grasp and understand but they are pure codes
+
+I have my notes in my notebook and I expect you to make your own notes because I have my own stupid ways of understanding concepts
+
+After getting grasp on all the below listed serial numbers we will proceed to algorithmic coding with problems
+
+
+IF YOU ARE ABLE TO DO PRACTISE 29 ON YOUR OWN THEN CONGRATS YOU MADE AKI PROUD AS A TEACHER AND NOW YOU ARE WELL VERSED WITH THE BASICS OF C.
+NOW WITH THE POWER OF CODING IN YOUR HANDS I WANT YOU TO CONQUER THE WORLD AND GIVE ME CREDITS AS YOUR MENTOR.
+________________________________________________________________________________________________________________________________________
+
+THE BASIC STRUCTURE HOW YOUR EVERY BASIC C CODE SHOULD LOOK LIKE IS:
+
+#incldue <stdio.h>
+#include <stdlib.h>
+int main(){
+    
+    /*
+    codes
+    */
+
+    return 0;
+}
+
+_________________________________________________________________________________________________________________________________________
+
+
+HAVE FUN CODING and I want you to be better than me 
+
+Anyone learning this I LOVE you
+
+Yours Lovingly
+AKI

@@ -1,0 +1,46 @@
+
+DATA TYPES :
+
+integer -> int : Allows to take input as an integer                 Placeholder : %d
+double -> decimal : allows to take input as decimal                 Placeholder : %f
+long  - > decimals : allows to take input as decimal                Placeholder : %f
+char -> character : allows to take input as a single letter/alphabet    Placeholder: %c
+string -> Placeholder ": %s
+
+
+variable naming rules:
+
+1. cannot be a number ir symbol
+2. alphabets or words can be variable names
+3. symbols cannot be variable names
+4. statements cannot be variables names ie printf, scanf, #include cannot be variable names
+5. a = 45 , a1 = 56, a2= 78, a3 = 89, akshat67 = 217 ->allowed variable names
+6. akshat_panicker = 987 , first_name = akshat, last_name = panicker ->allowed
+
+how to declare variable :
+
+<data type> <variable name> ; 
+
+int number = 67;
+double/long number = 86;
+
+
+scanf -> allows user to input
+scanf ("Placeholder", &variablename)
+
+
+declare 2 variables
+take 2 numbers as inputs from user
+give output as 2 different statements
+statement1 : "First number is <number stored in variable 1>"
+statement2 : "Second number is <number stored in variable 2>"
+
+
+Q2
+
+Hi I am <age input> years old.
+I will be turning <age2 input> in <year input> ie <number of years input> from now.
+
+eg: 
+Hi I am 17 years old.
+I will be turning 25 in 2030 ie 7 years from now.
